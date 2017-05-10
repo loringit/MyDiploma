@@ -1,39 +1,36 @@
 //
-//  User.swift
+//  DataModel.swift
 //  MyDiploma
 //
-//  Created by Булат Якупов on 22.10.16.
-//  Copyright © 2016 Булат Якупов. All rights reserved.
+//  Created by Булат Якупов on 09.05.17.
+//  Copyright © 2017 Булат Якупов. All rights reserved.
 //
 
 import Foundation
-import UIKit
-import Alamofire
 
 class DataModel {
-    var userAttempts: [[Float32]] = []
-    var attempt = 0
     
-    func loadTouches() {
+    static var dataModel = DataModel()
+    
+    var users = [User]()
+    
+    init() {
         print("\(documentsDirectory())")
         
         let path = dataFilePath()
         if FileManager.default.fileExists(atPath: path) {
-            print("[")
             if let data = NSData(contentsOfFile: path) {
                 let unarchiever = NSKeyedUnarchiver(forReadingWith: data as Data)
-                userAttempts = unarchiever.decodeObject(forKey: "UserAttempts") as! [[Float32]]
-                attempt = unarchiever.decodeInteger(forKey: "Attempt")
+                users = unarchiever.decodeObject(forKey: "Users") as! [User]
                 unarchiever.finishDecoding()
             }
         }
     }
     
-    func saveTouches() {
+    func save() {
         let data =  NSMutableData()
         let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(userAttempts, forKey: "UserAttempts")
-        archiver.encode(attempt, forKey: "Attempt")
+        archiver.encode(users, forKey: "Users")
         archiver.finishEncoding()
         data.write(toFile: dataFilePath(), atomically: true)
     }
@@ -47,24 +44,72 @@ class DataModel {
         return paths[0]
     }
     
-    init() {
-        loadTouches()
-        
-    }
-    
-    func registerDefaults() {
-        let dictionary = ["FirstTime": true]
-        
-        UserDefaults.standard.register(defaults: dictionary)
-    }
-    
-    func handleFirstTime() {
-        let userDefaults = UserDefaults.standard
-        
-        let firstTime = userDefaults.bool(forKey: "FirstTime")
-        if firstTime {
-            userDefaults.set(false, forKey: "FirstTime")
-            userDefaults.synchronize()
+    func getUser(with login: String) -> User? {
+        for user in users {
+            if user.login == login {
+                return user
+            }
         }
+        
+        return nil
+    }
+}
+
+class User: NSObject, NSCoding {
+    var login: String!
+    var passwords: [String]!
+    
+    var numInputs = UserInputs()
+    var graphInputs = UserInputs()
+    
+    init(login: String, passwords: [String]) {
+        self.login = login
+        self.passwords = passwords
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init()
+        loadUser()
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        saveUser()
+    }
+
+    func saveUser() {
+        let data =  NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.encode(login, forKey: "Login")
+        archiver.encode(passwords, forKey: "Password")
+        archiver.encode(numInputs, forKey:"NumInputs")
+        archiver.encode(graphInputs, forKey:"GraphInputs")
+        archiver.finishEncoding()
+        data.write(toFile: dataFilePath(), atomically: true)
+    }
+    
+    func loadUser() {
+        print("\(documentsDirectory())")
+        
+        let path = dataFilePath()
+        if FileManager.default.fileExists(atPath: path) {
+            if let data = NSData(contentsOfFile: path) {
+                let unarchiever = NSKeyedUnarchiver(forReadingWith: data as Data)
+                numInputs = unarchiever.decodeObject(forKey: "NumInputs") as! UserInputs
+                graphInputs = unarchiever.decodeObject(forKey: "GraphInputs") as! UserInputs
+                login = unarchiever.decodeObject(forKey: "Attempt") as! String
+                passwords = unarchiever.decodeObject(forKey: "Attempt") as! [String]
+                unarchiever.finishDecoding()
+            }
+        }
+    }
+    
+    func dataFilePath() -> String {
+        return (documentsDirectory() as NSString).appendingPathComponent("MyDiploma.plis")
+    }
+    
+    func documentsDirectory() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        return paths[0]
     }
 }

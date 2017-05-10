@@ -13,8 +13,13 @@
 		26FF52A31EC1FC3400933BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A11EC1FC3400933BC5 /* Main.storyboard */; };
 		26FF52A51EC1FC3400933BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A41EC1FC3400933BC5 /* Assets.xcassets */; };
 		26FF52A81EC1FC3400933BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A61EC1FC3400933BC5 /* LaunchScreen.storyboard */; };
-		26FF52B11EC1FE4100933BC5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52AF1EC1FE4100933BC5 /* DataModel.swift */; };
+		26FF52B11EC1FE4100933BC5 /* UserNumInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */; };
 		26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */; };
+		26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B31EC2070F00933BC5 /* DataModel.swift */; };
+		26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */; };
+		26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B91EC235DB00933BC5 /* LoginVC.swift */; };
+		26FF52BC1EC2484200933BC5 /* GraphCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */; };
+		26FF52BE1EC34E6D00933BC5 /* GraphCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +30,13 @@
 		26FF52A41EC1FC3400933BC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26FF52A71EC1FC3400933BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26FF52A91EC1FC3400933BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26FF52AF1EC1FE4100933BC5 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNumInputs.swift; sourceTree = "<group>"; };
 		26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCodeVC.swift; sourceTree = "<group>"; };
+		26FF52B31EC2070F00933BC5 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		26FF52B91EC235DB00933BC5 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeVC.swift; sourceTree = "<group>"; };
+		26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeView.swift; sourceTree = "<group>"; };
 		5336B71986AD390EA105ABF3 /* Pods_MyDiploma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiploma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ED2526E428EF1CB1B15C448 /* Pods-MyDiploma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.debug.xcconfig"; sourceTree = "<group>"; };
 		E27FCADEB93D168341B4CB15 /* Pods-MyDiploma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,8 +75,12 @@
 		26FF529C1EC1FC3400933BC5 /* MyDiploma */ = {
 			isa = PBXGroup;
 			children = (
-				26FF52AF1EC1FE4100933BC5 /* DataModel.swift */,
+				26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */,
+				26FF52B31EC2070F00933BC5 /* DataModel.swift */,
 				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
+				26FF52BF1EC34E7100933BC5 /* GraphCode */,
+				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
+				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
 				26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */,
 				26FF529F1EC1FC3400933BC5 /* ViewController.swift */,
 				26FF52A11EC1FC3400933BC5 /* Main.storyboard */,
@@ -75,6 +89,15 @@
 				26FF52A91EC1FC3400933BC5 /* Info.plist */,
 			);
 			path = MyDiploma;
+			sourceTree = "<group>";
+		};
+		26FF52BF1EC34E7100933BC5 /* GraphCode */ = {
+			isa = PBXGroup;
+			children = (
+				26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */,
+				26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */,
+			);
+			name = GraphCode;
 			sourceTree = "<group>";
 		};
 		64310AB3CE7CDB3777546073 /* Pods */ = {
@@ -218,10 +241,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */,
+				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
+				26FF52BC1EC2484200933BC5 /* GraphCodeVC.swift in Sources */,
+				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
+				26FF52BE1EC34E6D00933BC5 /* GraphCodeView.swift in Sources */,
 				26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
 				26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */,
-				26FF52B11EC1FE4100933BC5 /* DataModel.swift in Sources */,
+				26FF52B11EC1FE4100933BC5 /* UserNumInputs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,29 +11,25 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-let myPasscode = 210995
-
 enum AnalysisResult {
-    case Success
-    case WrongPassword
-    case Infiltration
-    case Error
+    case success(String)
+    case wrongPassword
 }
 
 class PassCodeVC: UIViewController {
     
     @IBOutlet weak var headerLabel: UILabel!
     
-    @IBOutlet var dots: [UIView]!
-    
     @IBOutlet var numButtons: [UILabel]!
     
     @IBOutlet weak var deleteBut: UIButton!
     
-    var dataModel: DataModel!
+    @IBOutlet weak var dotsLabel: UILabel!
+    
+    var user: User!
     
     var passcode = [Int]()
-    var enteredPasscode = 0
+    var enteredPasscode = ""
     var passLen = 0
     var firstTouch: CGFloat = 0
     var lastTouch: CGFloat = 0
@@ -44,17 +40,8 @@ class PassCodeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prepareDots()
         prepareNums()
         prepareBackground()
-    }
-    
-    func prepareDots(){
-        for dot in dots {
-            dot.layer.cornerRadius = 10
-            dot.layer.borderWidth = 1
-            dot.layer.borderColor = UIColor.white.cgColor
-        }
     }
     
     func prepareNums(){
@@ -116,104 +103,54 @@ class PassCodeVC: UIViewController {
     }
     
     func addDot() {
-        if passLen < 7 && passLen > 0 {
-            dots[passLen - 1].backgroundColor = UIColor.white
-        }
+        dotsLabel.text = (dotsLabel.text ?? "") + "\u{25cf}"
     }
     
     func deleteDot() {
-        while passLen != 0 {
-            dots[passLen - 1].backgroundColor = UIColor.clear
-            passLen -= 1
-        }
-        
+        dotsLabel.text = ""
         self.touchesSet.removeAll()
         passcode.removeAll()
     }
     
     func verifyPasscode() {
-        /*for num in numButtons {
-            num.isUserInteractionEnabled = false
-        }*/
+        
+        var password = ""
         
         for i in 0...passLen - 1 {
-            enteredPasscode = enteredPasscode + passcode[i] * Int(pow(Double(10), Double(passLen - 1 - i)))
+            enteredPasscode = enteredPasscode + String(passcode[i] * Int(pow(Double(10), Double(passLen - 1 - i))))
         }
         
-        if enteredPasscode == myPasscode {
-            print("\(touchesSet), ")
-            
-            //deleteDot()
-            print(dataModel.attempt)
-            if dataModel.attempt < 100 {
-                analyzeAndShow(result: .Success)
-            } else {
-                
-                if dataModel.attempt == 100 {
-
-                    analyzeAndShow(result: .Success)
-                    
-                    let parameters: Parameters = [
-                        "trainingSet" : dataModel.userAttempts
-                    ]
-                    
-                    print(dataModel.userAttempts.last!)
-                    
-                    Alamofire.request("http://loringit.pythonanywhere.com/train", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-                        switch response.result {
-                        case .success(let value):
-                            let json = JSON(value)
-                            print(json["result"])
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-                } else {
-             
-                    let parameters: Parameters = [
-                        "dataSet" : touchesSet
-                    ]
-                
-                    Alamofire.request("http://loringit.pythonanywhere.com/check", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-                            print(response)
-                            switch response.result {
-                        case .success(let value):
-                            let json = JSON(value)
-                            if json["result"] == "true" {
-                                self.analyzeAndShow(result: .Success)
-                            } else {
-                                self.analyzeAndShow(result: .Infiltration)
-                            }
-                        case .failure(let error):
-                            self.analyzeAndShow(result: .Error)
-                            print(error)
-                        }
-                    }
-                }
-            }
-        } else {
-            analyzeAndShow(result: .WrongPassword)
+        switch enteredPasscode.characters.count {
+        case 4:
+            password = user.passwords[0]
+        case 5:
+            password = user.passwords[1]
+        case 6:
+            password = user.passwords[2]
+        default:
+            break
         }
-        enteredPasscode = 0
+        
+        if enteredPasscode == password {
+            print("\(touchesSet)")
+            print(user.numInputs.attempt)
+            
+            analyzeAndShow(result: .success("You entered password \(user.numInputs.attempt) times!"))
+        } else {
+            analyzeAndShow(result: .wrongPassword)
+        }
+        enteredPasscode = ""
     }
     
     func prepareAndShowAlertController(alertConfig: AnalysisResult, alertController alert: UIAlertController) {
         switch alertConfig {
-        case .Success:
+        case .success(let str):
             alert.title = "Complete!"
-            alert.message = "Entered right passcode!"
+            alert.message = str
             break
-        case .WrongPassword:
+        case .wrongPassword:
             alert.title = "Error!"
             alert.message = "Entered wrong passcode! Please check enter again."
-            break
-        case .Infiltration:
-            alert.title = "Error!"
-            alert.message = "Passcode have been entered by wrong person!"
-            break
-        case .Error:
-            alert.title = "Error!"
-            alert.message = "Something is wrong with server!"
             break
         }
         
@@ -235,10 +172,10 @@ class PassCodeVC: UIViewController {
         prepareAndShowAlertController(alertConfig: result, alertController: alert)
         
         switch result {
-        case .Success:
-            dataModel.userAttempts.append(touchesSet)
-            dataModel.saveTouches()
-            dataModel.attempt += 1
+        case .success:
+            user.numInputs.userAttempts.append(touchesSet)
+            user.numInputs.saveTouches()
+            user.numInputs.attempt += 1
             break
         default:
             break
