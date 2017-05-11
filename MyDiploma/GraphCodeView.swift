@@ -42,6 +42,28 @@ class GraphCodeView: UIView {
                     addSubview(dot)
                 }
             }
+            
+            addConstraints([NSLayoutConstraint(item: dots[0], attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[0], attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[0], attribute: .trailing, relatedBy: .equal, toItem: dots[1], attribute: .leading, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[0], attribute: .bottom, relatedBy: .equal, toItem: dots[3], attribute: .top, multiplier: 1.0, constant: 0)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[1], attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[1], attribute: .trailing, relatedBy: .equal, toItem: dots[2], attribute: .leading, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[1], attribute: .bottom, relatedBy: .equal, toItem: dots[4], attribute: .top, multiplier: 1.0, constant: 5)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[2], attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[2], attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[1], attribute: .bottom, relatedBy: .equal, toItem: dots[5], attribute: .top, multiplier: 1.0, constant: 5)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[3], attribute: .bottom, relatedBy: .equal, toItem: dots[6], attribute: .top, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[3], attribute: .trailing, relatedBy: .equal, toItem: dots[4], attribute: .leading, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[3], attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[4], attribute: .bottom, relatedBy: .equal, toItem: dots[7], attribute: .top, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[4], attribute: .trailing, relatedBy: .equal, toItem: dots[5], attribute: .leading, multiplier: 1.0, constant: 5)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[5], attribute: .bottom, relatedBy: .equal, toItem: dots[8], attribute: .top, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[5], attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[6], attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[6], attribute: .trailing, relatedBy: .equal, toItem: dots[7], attribute: .leading, multiplier: 1.0, constant: 5), NSLayoutConstraint(item: dots[3], attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[7], attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[7], attribute: .trailing, relatedBy: .equal, toItem: dots[8], attribute: .leading, multiplier: 1.0, constant: 5)])
+            
+            addConstraints([NSLayoutConstraint(item: dots[8], attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[5], attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0)])
+            
+            for i in 2...9 {
+                dots[0].addConstraints([NSLayoutConstraint(item: dots[0], attribute: .width, relatedBy: .equal, toItem: dots[i], attribute: .width, multiplier: 1.0, constant: 0), NSLayoutConstraint(item: dots[0], attribute: .height, relatedBy: .equal, toItem: dots[i], attribute: .height, multiplier: 1.0, constant: 0)])
+            }
         }
     }
     
@@ -197,37 +219,19 @@ class GraphCodeDot: UIView {
         self.position = position
         selected = false
         
-        switch position {
-        case .topLeft:
-            center = CGPoint(x: (bounds.width - 10)/6, y: (bounds.height - 10)/6)
-        case .top:
-            center = CGPoint(x: (bounds.width - 10)/2 + 5, y: (bounds.height - 10)/6)
-        case .topRight:
-            center = CGPoint(x: 5 * (bounds.width - 10)/6 + 10, y: (bounds.height - 10)/6)
-        case .left:
-            center = CGPoint(x: (bounds.width - 10)/6, y: (bounds.height - 10)/2 + 5)
-        case .center:
-            center = CGPoint(x: (bounds.width - 10)/2 + 5, y: (bounds.height - 10)/2 + 5)
-        case .right:
-            center = CGPoint(x: 5 * (bounds.width - 10)/6 + 10, y: (bounds.height - 10)/2 + 5)
-        case .bottomLeft:
-            center = CGPoint(x: (bounds.width - 10)/6, y: 5 * (bounds.width - 10)/6 + 10)
-        case .bottom:
-            center = CGPoint(x: (bounds.width - 10)/2 + 5, y: 5 * (bounds.width - 10)/6 + 10)
-        case .bottomRight:
-            center = CGPoint(x: 5 * (bounds.width - 10)/6 + 10, y: 5 * (bounds.width - 10)/6 + 10)
-        }
+        frame = CGRect(x: center.x, y: center.y, width: (bounds.width - 10)/3, height: (bounds.width - 10)/3)
         
-        radius = (bounds.width - 10)/6
+        radius = (frame.width - 10)/6
         
-        frame = CGRect(x: center.x, y: center.y, width: radius * 2, height: radius * 2)
-        
-        ring.frame = CGRect(x: center.x, y: center.y, width: radius * 2 - 6, height: radius * 2 - 6)
         ring.backgroundColor = UIColor.black
         ring.layer.cornerRadius = ring.frame.height/2
         
-        circle.frame = CGRect(x: center.x, y: center.y, width: radius, height: radius)
         circle.layer.cornerRadius = ring.frame.height/2
+        
+        addSubview(ring)
+        addSubview(circle)
+        
+        addConstraints([NSLayoutConstraint(item: ring, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 3), NSLayoutConstraint(item: ring, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 3), NSLayoutConstraint(item: ring, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 3), NSLayoutConstraint(item: ring, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 3), NSLayoutConstraint(item: circle, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: radius/2), NSLayoutConstraint(item: circle, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: radius/2), NSLayoutConstraint(item: circle, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: radius/2), NSLayoutConstraint(item: circle, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: radius/2)])
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26BF3127DD96F5925E4C357B /* Pods_MyDiploma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5336B71986AD390EA105ABF3 /* Pods_MyDiploma.framework */; };
 		26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */; };
 		26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF529F1EC1FC3400933BC5 /* ViewController.swift */; };
 		26FF52A31EC1FC3400933BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A11EC1FC3400933BC5 /* Main.storyboard */; };
@@ -20,6 +19,7 @@
 		26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B91EC235DB00933BC5 /* LoginVC.swift */; };
 		26FF52BC1EC2484200933BC5 /* GraphCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */; };
 		26FF52BE1EC34E6D00933BC5 /* GraphCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */; };
+		9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +37,7 @@
 		26FF52B91EC235DB00933BC5 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeVC.swift; sourceTree = "<group>"; };
 		26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeView.swift; sourceTree = "<group>"; };
-		5336B71986AD390EA105ABF3 /* Pods_MyDiploma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiploma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ED2526E428EF1CB1B15C448 /* Pods-MyDiploma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.debug.xcconfig"; sourceTree = "<group>"; };
-		E27FCADEB93D168341B4CB15 /* Pods-MyDiploma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.release.xcconfig"; sourceTree = "<group>"; };
+		9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26BF3127DD96F5925E4C357B /* Pods_MyDiploma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +56,6 @@
 			children = (
 				26FF529C1EC1FC3400933BC5 /* MyDiploma */,
 				26FF529B1EC1FC3400933BC5 /* Products */,
-				64310AB3CE7CDB3777546073 /* Pods */,
-				ED84646DD61BA8771D48FB1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +75,7 @@
 				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
 				26FF52BF1EC34E7100933BC5 /* GraphCode */,
 				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
+				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
 				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
 				26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */,
 				26FF529F1EC1FC3400933BC5 /* ViewController.swift */,
@@ -100,23 +96,6 @@
 			name = GraphCode;
 			sourceTree = "<group>";
 		};
-		64310AB3CE7CDB3777546073 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5ED2526E428EF1CB1B15C448 /* Pods-MyDiploma.debug.xcconfig */,
-				E27FCADEB93D168341B4CB15 /* Pods-MyDiploma.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		ED84646DD61BA8771D48FB1C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5336B71986AD390EA105ABF3 /* Pods_MyDiploma.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,12 +103,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26FF52AC1EC1FC3400933BC5 /* Build configuration list for PBXNativeTarget "MyDiploma" */;
 			buildPhases = (
-				57A81CF4C0B4826C233FA24F /* [CP] Check Pods Manifest.lock */,
 				26FF52961EC1FC3400933BC5 /* Sources */,
 				26FF52971EC1FC3400933BC5 /* Frameworks */,
 				26FF52981EC1FC3400933BC5 /* Resources */,
-				D87F26615178BDC8ECE2E59A /* [CP] Embed Pods Frameworks */,
-				CE8589CFE20B66AF4272BC28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,54 +164,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		57A81CF4C0B4826C233FA24F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CE8589CFE20B66AF4272BC28 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D87F26615178BDC8ECE2E59A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		26FF52961EC1FC3400933BC5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -245,6 +173,7 @@
 				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
 				26FF52BC1EC2484200933BC5 /* GraphCodeVC.swift in Sources */,
 				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
+				9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */,
 				26FF52BE1EC34E6D00933BC5 /* GraphCodeView.swift in Sources */,
 				26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
@@ -368,7 +297,6 @@
 		};
 		26FF52AD1EC1FC3400933BC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5ED2526E428EF1CB1B15C448 /* Pods-MyDiploma.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YJB24HLAND;
@@ -382,7 +310,6 @@
 		};
 		26FF52AE1EC1FC3400933BC5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E27FCADEB93D168341B4CB15 /* Pods-MyDiploma.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YJB24HLAND;

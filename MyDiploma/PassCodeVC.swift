@@ -8,12 +8,10 @@
 
 import Foundation
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 enum AnalysisResult {
     case success(String)
-    case wrongPassword
+    case error(String)
 }
 
 class PassCodeVC: UIViewController {
@@ -31,8 +29,6 @@ class PassCodeVC: UIViewController {
     var passcode = [Int]()
     var enteredPasscode = ""
     var passLen = 0
-    var firstTouch: CGFloat = 0
-    var lastTouch: CGFloat = 0
     var touchesSet: [Float32] = []
     var previousTouchEnd = NSDate()
     var currentTouchBeginning = NSDate()
@@ -128,7 +124,7 @@ class PassCodeVC: UIViewController {
         case 6:
             password = user.passwords[2]
         default:
-            break
+            analyzeAndShow(result: .error("Not enough characters"))
         }
         
         if enteredPasscode == password {
