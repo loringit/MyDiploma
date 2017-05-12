@@ -59,8 +59,9 @@ class User: NSObject, NSCoding {
     var login: String!
     var passwords: [String]!
     
-    var numInputs = UserInputs()
-    var graphInputs = UserInputs()
+    var num4Inputs = UserInputs()
+    var num5Inputs = UserInputs()
+    var num6Inputs = UserInputs()
     
     init(login: String, passwords: [String]) {
         self.login = login
@@ -69,47 +70,25 @@ class User: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        if let inputs = aDecoder.decodeObject(forKey: "Num4Inputs") as? UserInputs {
+            num4Inputs = inputs
+        }
+        if let inputs = aDecoder.decodeObject(forKey: "Num5Inputs") as? UserInputs {
+            num5Inputs = inputs
+        }
+        if let inputs = aDecoder.decodeObject(forKey: "Num6Inputs") as? UserInputs {
+            num6Inputs = inputs
+        }
+        login = aDecoder.decodeObject(forKey: "Login") as! String
+        passwords = aDecoder.decodeObject(forKey: "Password") as! [String]
         super.init()
-        loadUser()
     }
     
     func encode(with aCoder: NSCoder) {
-        saveUser()
-    }
-
-    func saveUser() {
-        let data =  NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(login, forKey: "Login")
-        archiver.encode(passwords, forKey: "Password")
-        archiver.encode(numInputs, forKey:"NumInputs")
-        archiver.encode(graphInputs, forKey:"GraphInputs")
-        archiver.finishEncoding()
-        data.write(toFile: dataFilePath(), atomically: true)
-    }
-    
-    func loadUser() {
-        print("\(documentsDirectory())")
-        
-        let path = dataFilePath()
-        if FileManager.default.fileExists(atPath: path) {
-            if let data = NSData(contentsOfFile: path) {
-                let unarchiever = NSKeyedUnarchiver(forReadingWith: data as Data)
-                numInputs = unarchiever.decodeObject(forKey: "NumInputs") as! UserInputs
-                graphInputs = unarchiever.decodeObject(forKey: "GraphInputs") as! UserInputs
-                login = unarchiever.decodeObject(forKey: "Attempt") as! String
-                passwords = unarchiever.decodeObject(forKey: "Attempt") as! [String]
-                unarchiever.finishDecoding()
-            }
-        }
-    }
-    
-    func dataFilePath() -> String {
-        return (documentsDirectory() as NSString).appendingPathComponent("MyDiploma.plis")
-    }
-    
-    func documentsDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        return paths[0]
+        aCoder.encode(login, forKey: "Login")
+        aCoder.encode(passwords, forKey: "Password")
+        aCoder.encode(num4Inputs, forKey:"Num4Inputs")
+        aCoder.encode(num5Inputs, forKey:"Num5Inputs")
+        aCoder.encode(num6Inputs, forKey:"Num6Inputs")
     }
 }

@@ -17,8 +17,6 @@
 		26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B31EC2070F00933BC5 /* DataModel.swift */; };
 		26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */; };
 		26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B91EC235DB00933BC5 /* LoginVC.swift */; };
-		26FF52BC1EC2484200933BC5 /* GraphCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */; };
-		26FF52BE1EC34E6D00933BC5 /* GraphCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */; };
 		9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +33,6 @@
 		26FF52B31EC2070F00933BC5 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		26FF52B91EC235DB00933BC5 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeVC.swift; sourceTree = "<group>"; };
-		26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeView.swift; sourceTree = "<group>"; };
 		9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +69,6 @@
 				26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */,
 				26FF52B31EC2070F00933BC5 /* DataModel.swift */,
 				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
-				26FF52BF1EC34E7100933BC5 /* GraphCode */,
 				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
 				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
 				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
@@ -85,15 +80,6 @@
 				26FF52A91EC1FC3400933BC5 /* Info.plist */,
 			);
 			path = MyDiploma;
-			sourceTree = "<group>";
-		};
-		26FF52BF1EC34E7100933BC5 /* GraphCode */ = {
-			isa = PBXGroup;
-			children = (
-				26FF52BB1EC2484200933BC5 /* GraphCodeVC.swift */,
-				26FF52BD1EC34E6D00933BC5 /* GraphCodeView.swift */,
-			);
-			name = GraphCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,10 +157,8 @@
 			files = (
 				26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */,
 				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
-				26FF52BC1EC2484200933BC5 /* GraphCodeVC.swift in Sources */,
 				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
 				9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */,
-				26FF52BE1EC34E6D00933BC5 /* GraphCodeView.swift in Sources */,
 				26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
 				26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */,

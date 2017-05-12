@@ -18,7 +18,7 @@ class RegistrationVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(RegistrationVC.checkRows))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(RegistrationVC.checkRows))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,15 +52,25 @@ class RegistrationVC: UITableViewController {
         var login = ""
         var passwords = [String]()
         
-        for i in 1...3 {
+        for i in 0...3 {
             let path = IndexPath(row: i, section: 0)
             
             let cell = tableView.cellForRow(at: path) as! RegistrationCell
             
-            switch path.row {
+            switch i {
             case 0:
                 if let text = cell.textField.text {
                     login = text
+                    if DataModel.dataModel.getUser(with: login) != nil {
+                        login = ""
+                        let alert = UIAlertController(title: "Error!", message: "Such user exists! Choose another username!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+                            (UIAlertAction) in
+                            self.ok(controller: alert)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
                 }
             case 1:
                 if let text = cell.textField.text {
@@ -90,15 +100,19 @@ class RegistrationVC: UITableViewController {
             
             DataModel.dataModel.users.append(user)
             
-            navigationController?.dismiss(animated: true, completion: nil)
+            let _ = navigationController?.popViewController(animated: true)
         } else {
-            let alert = UIAlertController(title: "Error!", message: "Check your fields! One of them is inappropriate!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Check your fields! At least one of them is inappropriate!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
                 (UIAlertAction) in
                 self.ok(controller: alert)
             }))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func ok(controller: UIAlertController) {

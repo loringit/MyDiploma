@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Alamofire
 
 class UserInputs: NSObject, NSCoding {
     var userAttempts: [[Float32]] = []
@@ -16,63 +15,16 @@ class UserInputs: NSObject, NSCoding {
     
     override init() {
         super.init()
-        loadTouches()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        userAttempts = aDecoder.decodeObject(forKey: "UserAttempts") as! [[Float32]]
+        attempt = aDecoder.decodeInteger(forKey: "Attempt")
         super.init()
-        loadTouches()
     }
     
     func encode(with aCoder: NSCoder) {
-        saveTouches()
-    }
-    
-    func loadTouches() {
-        print("\(documentsDirectory())")
-        
-        let path = dataFilePath()
-        if FileManager.default.fileExists(atPath: path) {
-            if let data = NSData(contentsOfFile: path) {
-                let unarchiever = NSKeyedUnarchiver(forReadingWith: data as Data)
-                userAttempts = unarchiever.decodeObject(forKey: "UserAttempts") as! [[Float32]]
-                attempt = unarchiever.decodeInteger(forKey: "Attempt")
-                unarchiever.finishDecoding()
-            }
-        }
-    }
-    
-    func saveTouches() {
-        let data =  NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(userAttempts, forKey: "UserAttempts")
-        archiver.encode(attempt, forKey: "Attempt")
-        archiver.finishEncoding()
-        data.write(toFile: dataFilePath(), atomically: true)
-    }
-    
-    func dataFilePath() -> String {
-        return (documentsDirectory() as NSString).appendingPathComponent("MyDiploma.plis")
-    }
-    
-    func documentsDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        return paths[0]
-    }
-    
-    func registerDefaults() {
-        let dictionary = ["FirstTime": true]
-        
-        UserDefaults.standard.register(defaults: dictionary)
-    }
-    
-    func handleFirstTime() {
-        let userDefaults = UserDefaults.standard
-        
-        let firstTime = userDefaults.bool(forKey: "FirstTime")
-        if firstTime {
-            userDefaults.set(false, forKey: "FirstTime")
-            userDefaults.synchronize()
-        }
+        aCoder.encode(userAttempts, forKey: "UserAttempts")
+        aCoder.encode(attempt, forKey: "Attempt")
     }
 }

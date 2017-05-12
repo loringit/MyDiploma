@@ -23,12 +23,14 @@ class PassCodeVC: UIViewController {
     @IBOutlet weak var deleteBut: UIButton!
     
     @IBOutlet weak var dotsLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var user: User!
     
     var passcode = [Int]()
     var enteredPasscode = ""
     var passLen = 0
+    var supposedLen = 0
     var touchesSet: [Float32] = []
     var previousTouchEnd = NSDate()
     var currentTouchBeginning = NSDate()
@@ -38,6 +40,8 @@ class PassCodeVC: UIViewController {
         
         prepareNums()
         prepareBackground()
+        
+        cancelButton.addTarget(nil, action: #selector(PassCodeVC.cancel), for: .touchUpInside)
     }
     
     func prepareNums(){
@@ -90,7 +94,7 @@ class PassCodeVC: UIViewController {
                     previousTouchEnd = NSDate()
                     touchesSet.append(Float32(previousTouchEnd.timeIntervalSince(currentTouchBeginning as Date)))
                     
-                    if passcode.count == 6 {
+                    if passcode.count == supposedLen {
                         self.verifyPasscode()
                     }
                 }
@@ -103,6 +107,7 @@ class PassCodeVC: UIViewController {
     }
     
     func deleteDot() {
+        passLen = 0
         dotsLabel.text = ""
         self.touchesSet.removeAll()
         passcode.removeAll()
@@ -111,29 +116,30 @@ class PassCodeVC: UIViewController {
     func verifyPasscode() {
         
         var password = ""
+        var attempts = 0
         
         for i in 0...passLen - 1 {
-            enteredPasscode = enteredPasscode + String(passcode[i] * Int(pow(Double(10), Double(passLen - 1 - i))))
+            enteredPasscode = enteredPasscode + String(passcode[i])
         }
         
-        switch enteredPasscode.characters.count {
+        switch passcode.count {
         case 4:
             password = user.passwords[0]
+            attempts = user.num4Inputs.attempt
         case 5:
             password = user.passwords[1]
+            attempts = user.num5Inputs.attempt
         case 6:
             password = user.passwords[2]
+            attempts = user.num6Inputs.attempt
         default:
             analyzeAndShow(result: .error("Not enough characters"))
         }
         
         if enteredPasscode == password {
-            print("\(touchesSet)")
-            print(user.numInputs.attempt)
-            
-            analyzeAndShow(result: .success("You entered password \(user.numInputs.attempt) times!"))
+            analyzeAndShow(result: .success("You entered password \(attempts + 1) times!"))
         } else {
-            analyzeAndShow(result: .wrongPassword)
+            analyzeAndShow(result: .error("Entered wrong passcode!"))
         }
         enteredPasscode = ""
     }
@@ -144,9 +150,9 @@ class PassCodeVC: UIViewController {
             alert.title = "Complete!"
             alert.message = str
             break
-        case .wrongPassword:
+        case .error(let str):
             alert.title = "Error!"
-            alert.message = "Entered wrong passcode! Please check enter again."
+            alert.message = str
             break
         }
         
@@ -169,12 +175,25 @@ class PassCodeVC: UIViewController {
         
         switch result {
         case .success:
-            user.numInputs.userAttempts.append(touchesSet)
-            user.numInputs.saveTouches()
-            user.numInputs.attempt += 1
+            switch supposedLen {
+            case 4:
+                user.num4Inputs.userAttempts.append(touchesSet)
+                user.num4Inputs.attempt += 1
+            case 5:
+                user.num5Inputs.userAttempts.append(touchesSet)
+                user.num5Inputs.attempt += 1
+            case 6:
+                user.num6Inputs.userAttempts.append(touchesSet)
+                user.num6Inputs.attempt += 1
+            default:
+                break
+            }
+            
+            DataModel.dataModel.save()
+            
             break
-        default:
-            break
+        case .error:
+            enteredPasscode = ""
         }
 
     }
@@ -198,5 +217,9 @@ class PassCodeVC: UIViewController {
     
     func setHeader(text: String) {
         headerLabel.text = text
+    }
+    
+    func cancel() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
