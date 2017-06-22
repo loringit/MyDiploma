@@ -33,6 +33,12 @@ class DataModel {
         archiver.encode(users, forKey: "Users")
         archiver.finishEncoding()
         data.write(toFile: dataFilePath(), atomically: true)
+        
+        for user in users {
+            save(user: user, input: user.num4Inputs, withLength: 4)
+            save(user: user, input: user.num5Inputs, withLength: 5)
+            save(user: user, input: user.num6Inputs, withLength: 6)
+        }
     }
     
     func dataFilePath() -> String {
@@ -52,6 +58,24 @@ class DataModel {
         }
         
         return nil
+    }
+    
+    func save(user: User, input: UserInputs, withLength: Int) {
+        var stringToWrite = ""
+        if let login = user.login {
+            for input in input.userAttempts {
+                for time in input {
+                    stringToWrite.append("\(time) ")
+                }
+                stringToWrite.append("\n")
+            }
+            
+            do {
+                try stringToWrite.write(toFile: (documentsDirectory() as NSString).appendingPathComponent("\(login)_\(withLength).txt"), atomically: false, encoding: .utf8)
+            } catch {
+                print("error with \(withLength) number input")
+            }
+        }
     }
 }
 

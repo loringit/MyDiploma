@@ -24,6 +24,8 @@ class PassCodeVC: UIViewController {
     
     @IBOutlet weak var dotsLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     
     var user: User!
     
@@ -40,6 +42,22 @@ class PassCodeVC: UIViewController {
         
         prepareNums()
         prepareBackground()
+        
+        var attempts = 0
+        
+        switch supposedLen {
+        case 4:
+            attempts = user.num4Inputs.attempt
+        case 5:
+            attempts = user.num5Inputs.attempt
+        case 6:
+            attempts = user.num6Inputs.attempt
+        default:
+            break
+        }
+        
+        statusLabel.text = "Entered \(attempts) times"
+        headerLabel.text = "Enter \(supposedLen) number password"
         
         cancelButton.addTarget(nil, action: #selector(PassCodeVC.cancel), for: .touchUpInside)
     }
@@ -68,20 +86,24 @@ class PassCodeVC: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        
+        resultLabel.text = ""
+        
         for touch in touches {
             for i in 0...9 {
                 if touch.view!.frame.origin == numButtons[i].frame.origin {
                     currentTouchBeginning = NSDate()
                     if !passcode.isEmpty  {
                         touchesSet.append(Float32(currentTouchBeginning.timeIntervalSince(previousTouchEnd as Date)))
+                    } else {
+                        touchesSet.append(Float32(0))
                     }
                     
                     passcode.append(i)
                     passLen += 1
+                    self.addDot()
                 }
             }
-            
-            self.addDot()
         }
     }
 
@@ -115,6 +137,10 @@ class PassCodeVC: UIViewController {
     
     func verifyPasscode() {
         
+        for num in self.numButtons {
+            num.isUserInteractionEnabled = false
+        }
+        
         var password = ""
         var attempts = 0
         
@@ -144,7 +170,7 @@ class PassCodeVC: UIViewController {
         enteredPasscode = ""
     }
     
-    func prepareAndShowAlertController(alertConfig: AnalysisResult, alertController alert: UIAlertController) {
+    /*func prepareAndShowAlertController(alertConfig: AnalysisResult, alertController alert: UIAlertController) {
         switch alertConfig {
         case .success(let str):
             alert.title = "Complete!"
@@ -163,39 +189,63 @@ class PassCodeVC: UIViewController {
             }
             self.touchesSet.removeAll()
         })
-    }
+    }*/
     
     func analyzeAndShow(result: AnalysisResult) {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        /*let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
             (UIAlertAction) in
             self.ok(controller: alert)
         }))
-        prepareAndShowAlertController(alertConfig: result, alertController: alert)
+        prepareAndShowAlertController(alertConfig: result, alertController: alert)*/
+        
+        var attempt = 0
         
         switch result {
         case .success:
+            
+            resultLabel.text = "Right password"
+            resultLabel.textColor = UIColor.green
+            
             switch supposedLen {
             case 4:
                 user.num4Inputs.userAttempts.append(touchesSet)
                 user.num4Inputs.attempt += 1
+                attempt = user.num4Inputs.attempt
             case 5:
                 user.num5Inputs.userAttempts.append(touchesSet)
                 user.num5Inputs.attempt += 1
+                attempt = user.num5Inputs.attempt
             case 6:
                 user.num6Inputs.userAttempts.append(touchesSet)
                 user.num6Inputs.attempt += 1
+                attempt = user.num6Inputs.attempt
             default:
                 break
             }
             
+            for attempts in user.num4Inputs.userAttempts {
+                for time in attempts {
+                    print(time)
+                }
+            }
+            
             DataModel.dataModel.save()
+            
+            statusLabel.text = "Entered \(attempt) times"
             
             break
         case .error:
             enteredPasscode = ""
+            resultLabel.text = "Wrong password"
+            resultLabel.textColor = UIColor.red
         }
-
+        
+        deleteDot()
+        
+        for num in self.numButtons {
+            num.isUserInteractionEnabled = true
+        }
     }
     
     func makeTouchesSet(touches: [UITouch]) -> [Float32] {
@@ -211,8 +261,8 @@ class PassCodeVC: UIViewController {
     }
     
     func ok(controller: UIAlertController) {
-        controller.dismiss(animated: true, completion: {})
         self.deleteDot()
+        controller.dismiss(animated: true, completion: {})
     }
     
     func setHeader(text: String) {
