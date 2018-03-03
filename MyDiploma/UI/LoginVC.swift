@@ -19,8 +19,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         loginTF.returnKeyType = .done
         loginTF.delegate = self
-        
         enterButton.isEnabled = false
+        
         enterButton.addTarget(self, action: #selector(LoginVC.checkAndProceed), for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.textDidChanged(notification:)), name: .UITextFieldTextDidChange, object: loginTF)
@@ -34,7 +34,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textDidChanged(notification: NSNotification) {
+    @objc func textDidChanged(notification: NSNotification) {
         if let text = loginTF.text, text != "" {
             enterButton.isEnabled = true
         } else {
@@ -46,7 +46,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         controller.dismiss(animated: true, completion: {})
     }
     
-    func checkAndProceed() {
+    @objc func checkAndProceed() {
         if let login = loginTF.text {
             let user = DataModel.dataModel.getUser(with: login)
             if let usr = user {

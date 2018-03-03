@@ -35,20 +35,15 @@ class RegistrationVC: UITableViewController {
         switch indexPath.row {
         case 0:
             cell.textField.placeholder = "Login"
-        case 1:
-            cell.textField.placeholder = "4 character password"
-        case 2:
-            cell.textField.placeholder = "5 character password"
-        case 3:
-            cell.textField.placeholder = "6 character password"
+            
         default:
-            break
+            cell.textField.placeholder = "\(3 + indexPath.row) character password"
         }
         
         return cell
     }
     
-    func checkRows() {
+    @objc func checkRows() {
         var login = ""
         var passwords = [String]()
         
@@ -63,35 +58,17 @@ class RegistrationVC: UITableViewController {
                     login = text
                     if DataModel.dataModel.getUser(with: login) != nil {
                         login = ""
-                        let alert = UIAlertController(title: "Error!", message: "Such user exists! Choose another username!", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
-                            (UIAlertAction) in
-                            self.ok(controller: alert)
-                        }))
-                        self.present(alert, animated: true, completion: nil)
+                        presentAlert(with: "Error!", and: "Check your fields! At least one of them is inappropriate!")
                         return
                     }
                 }
-            case 1:
-                if let text = cell.textField.text {
-                    if text.characters.count == 4 {
-                        passwords.append(text)
-                    }
-                }
-            case 2:
-                if let text = cell.textField.text {
-                    if text.characters.count == 5 {
-                        passwords.append(text)
-                    }
-                }
-            case 3:
-                if let text = cell.textField.text {
-                    if text.characters.count == 6 {
-                        passwords.append(text)
-                    }
-                }
+                
             default:
-                break
+                if let text = cell.textField.text {
+                    if text.count == (3 + i) {
+                        passwords.append(text)
+                    }
+                }
             }
         }
         
@@ -102,12 +79,7 @@ class RegistrationVC: UITableViewController {
             
             let _ = navigationController?.popViewController(animated: true)
         } else {
-            let alert = UIAlertController(title: "Error!", message: "Check your fields! At least one of them is inappropriate!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
-                (UIAlertAction) in
-                self.ok(controller: alert)
-            }))
-            self.present(alert, animated: true, completion: nil)
+            presentAlert(with: "Error!", and: "Check your fields! At least one of them is inappropriate!")
         }
     }
     
@@ -115,7 +87,14 @@ class RegistrationVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    func ok(controller: UIAlertController) {
-        controller.dismiss(animated: true, completion: {})
+    func presentAlert(with title: String, and subtitle: String) {
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { [unowned self] (UIAlertAction) in
+            self.dismiss(animated: true, completion: {})
+        })
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

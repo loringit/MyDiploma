@@ -170,34 +170,7 @@ class PassCodeVC: UIViewController {
         enteredPasscode = ""
     }
     
-    /*func prepareAndShowAlertController(alertConfig: AnalysisResult, alertController alert: UIAlertController) {
-        switch alertConfig {
-        case .success(let str):
-            alert.title = "Complete!"
-            alert.message = str
-            break
-        case .error(let str):
-            alert.title = "Error!"
-            alert.message = str
-            break
-        }
-        
-        self.present(alert, animated: true, completion: {
-            _ in
-            for num in self.numButtons {
-                num.isUserInteractionEnabled = true
-            }
-            self.touchesSet.removeAll()
-        })
-    }*/
-    
     func analyzeAndShow(result: AnalysisResult) {
-        /*let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
-            (UIAlertAction) in
-            self.ok(controller: alert)
-        }))
-        prepareAndShowAlertController(alertConfig: result, alertController: alert)*/
         
         var attempt = 0
         
@@ -269,7 +242,7 @@ class PassCodeVC: UIViewController {
         headerLabel.text = text
     }
     
-    func cancel() {
+    @objc func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
 }

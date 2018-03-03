@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-class ExperimentCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-}
-
 class ExperimnetTableVC: UITableViewController {
     
     var user: User!
@@ -30,18 +26,9 @@ class ExperimnetTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExperimentCell", for: indexPath) as! ExperimentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExperimentCell", for: indexPath)
         
-        switch indexPath.row {
-        case 0:
-            cell.titleLabel.text = "4 character password"
-        case 1:
-            cell.titleLabel.text = "5 character password"
-        case 2:
-            cell.titleLabel.text = "6 character password"
-        default:
-            break
-        }
+        cell.textLabel?.text = "\(4 + indexPath.row) character password"
         
         return cell
     }
@@ -49,16 +36,7 @@ class ExperimnetTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.row {
-        case 0:
-            presentPassCodeVC(requiredLen: 4)
-        case 1:
-            presentPassCodeVC(requiredLen: 5)
-        case 2:
-            presentPassCodeVC(requiredLen: 6)
-        default:
-            break
-        }
+        presentPassCodeVC(requiredLen: indexPath.row  + 4)
     }
     
     func presentPassCodeVC(requiredLen: Int) {

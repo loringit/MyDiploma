@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26DAAD791EFB1D3800ABD9CF /* PatternCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DAAD781EFB1D3800ABD9CF /* PatternCodeVC.swift */; };
-		26DAAD7B1EFC591F00ABD9CF /* PatternCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DAAD7A1EFC591F00ABD9CF /* PatternCodeView.swift */; };
 		26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */; };
-		26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF529F1EC1FC3400933BC5 /* ViewController.swift */; };
 		26FF52A31EC1FC3400933BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A11EC1FC3400933BC5 /* Main.storyboard */; };
 		26FF52A51EC1FC3400933BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A41EC1FC3400933BC5 /* Assets.xcassets */; };
 		26FF52A81EC1FC3400933BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A61EC1FC3400933BC5 /* LaunchScreen.storyboard */; };
@@ -19,15 +16,13 @@
 		26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B31EC2070F00933BC5 /* DataModel.swift */; };
 		26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */; };
 		26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B91EC235DB00933BC5 /* LoginVC.swift */; };
+		9314E5C0204AB0C6001E1CD8 /* PassCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */; };
 		9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26DAAD781EFB1D3800ABD9CF /* PatternCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternCodeVC.swift; sourceTree = "<group>"; };
-		26DAAD7A1EFC591F00ABD9CF /* PatternCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternCodeView.swift; sourceTree = "<group>"; };
 		26FF529A1EC1FC3400933BC5 /* MyDiploma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiploma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		26FF529F1EC1FC3400933BC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		26FF52A21EC1FC3400933BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26FF52A41EC1FC3400933BC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26FF52A71EC1FC3400933BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +32,7 @@
 		26FF52B31EC2070F00933BC5 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		26FF52B91EC235DB00933BC5 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeVM.swift; sourceTree = "<group>"; };
 		9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,22 +66,44 @@
 		26FF529C1EC1FC3400933BC5 /* MyDiploma */ = {
 			isa = PBXGroup;
 			children = (
-				26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */,
-				26FF52B31EC2070F00933BC5 /* DataModel.swift */,
-				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
-				26DAAD781EFB1D3800ABD9CF /* PatternCodeVC.swift */,
-				26DAAD7A1EFC591F00ABD9CF /* PatternCodeView.swift */,
-				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
-				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
-				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
+				9314E5BE204AA7B5001E1CD8 /* UI */,
+				9314E5BD204AA79D001E1CD8 /* Model */,
 				26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */,
-				26FF529F1EC1FC3400933BC5 /* ViewController.swift */,
 				26FF52A11EC1FC3400933BC5 /* Main.storyboard */,
 				26FF52A41EC1FC3400933BC5 /* Assets.xcassets */,
 				26FF52A61EC1FC3400933BC5 /* LaunchScreen.storyboard */,
 				26FF52A91EC1FC3400933BC5 /* Info.plist */,
 			);
 			path = MyDiploma;
+			sourceTree = "<group>";
+		};
+		9314E5BD204AA79D001E1CD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */,
+				26FF52B31EC2070F00933BC5 /* DataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9314E5BE204AA7B5001E1CD8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9314E5C1204AB0CC001E1CD8 /* PassCode */,
+				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
+				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
+				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9314E5C1204AB0CC001E1CD8 /* PassCode */ = {
+			isa = PBXGroup;
+			children = (
+				9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */,
+				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
+			);
+			path = PassCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,12 +133,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Булат Якупов";
 				TargetAttributes = {
 					26FF52991EC1FC3400933BC5 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = YJB24HLAND;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -161,13 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9314E5C0204AB0C6001E1CD8 /* PassCodeVM.swift in Sources */,
 				26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */,
 				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
 				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
 				9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */,
-				26DAAD7B1EFC591F00ABD9CF /* PatternCodeView.swift in Sources */,
-				26DAAD791EFB1D3800ABD9CF /* PatternCodeVC.swift in Sources */,
-				26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
 				26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */,
 				26FF52B11EC1FE4100933BC5 /* UserNumInputs.swift in Sources */,
@@ -205,7 +222,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -213,7 +232,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -255,7 +278,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -263,7 +288,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -298,7 +327,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BulatYakupov.MyDiploma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -311,7 +341,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BulatYakupov.MyDiploma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
