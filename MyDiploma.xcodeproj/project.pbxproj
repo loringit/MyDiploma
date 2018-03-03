@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26DAAD791EFB1D3800ABD9CF /* PatternCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DAAD781EFB1D3800ABD9CF /* PatternCodeVC.swift */; };
+		26DAAD7B1EFC591F00ABD9CF /* PatternCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DAAD7A1EFC591F00ABD9CF /* PatternCodeView.swift */; };
 		26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */; };
 		26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF529F1EC1FC3400933BC5 /* ViewController.swift */; };
 		26FF52A31EC1FC3400933BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A11EC1FC3400933BC5 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26DAAD781EFB1D3800ABD9CF /* PatternCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternCodeVC.swift; sourceTree = "<group>"; };
+		26DAAD7A1EFC591F00ABD9CF /* PatternCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternCodeView.swift; sourceTree = "<group>"; };
 		26FF529A1EC1FC3400933BC5 /* MyDiploma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiploma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FF529D1EC1FC3400933BC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26FF529F1EC1FC3400933BC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */,
 				26FF52B31EC2070F00933BC5 /* DataModel.swift */,
 				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
+				26DAAD781EFB1D3800ABD9CF /* PatternCodeVC.swift */,
+				26DAAD7A1EFC591F00ABD9CF /* PatternCodeView.swift */,
 				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
 				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
 				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
@@ -109,7 +115,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Булат Якупов";
 				TargetAttributes = {
 					26FF52991EC1FC3400933BC5 = {
@@ -159,6 +165,8 @@
 				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
 				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
 				9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */,
+				26DAAD7B1EFC591F00ABD9CF /* PatternCodeView.swift in Sources */,
+				26DAAD791EFB1D3800ABD9CF /* PatternCodeVC.swift in Sources */,
 				26FF52A01EC1FC3400933BC5 /* ViewController.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
 				26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */,
@@ -206,6 +214,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -255,6 +264,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
