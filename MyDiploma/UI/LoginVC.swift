@@ -21,9 +21,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         loginTF.delegate = self
         enterButton.isEnabled = false
         
-        enterButton.addTarget(self, action: #selector(LoginVC.checkAndProceed), for: .touchUpInside)
+        enterButton.addTarget(self, action: #selector(checkAndProceed), for: .touchUpInside)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.textDidChanged(notification:)), name: .UITextFieldTextDidChange, object: loginTF)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChanged(notification:)), name: .UITextFieldTextDidChange, object: loginTF)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

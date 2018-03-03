@@ -59,7 +59,7 @@ class PassCodeVC: UIViewController {
         statusLabel.text = "Entered \(attempts) times"
         headerLabel.text = "Enter \(supposedLen) number password"
         
-        cancelButton.addTarget(nil, action: #selector(PassCodeVC.cancel), for: .touchUpInside)
+        cancelButton.addTarget(nil, action: #selector(cancel), for: .touchUpInside)
     }
     
     func prepareNums(){
