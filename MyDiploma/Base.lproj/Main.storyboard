@@ -153,9 +153,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="titleLabel" destination="z8q-Hp-Xdx" id="6cB-Gs-BAT"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -90,8 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				9314E5C1204AB0CC001E1CD8 /* PassCode */,
-				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
 				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
+				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
 				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
 			);
 			path = UI;
@@ -100,8 +100,8 @@
 		9314E5C1204AB0CC001E1CD8 /* PassCode */ = {
 			isa = PBXGroup;
 			children = (
-				9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */,
 				26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */,
+				9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */,
 			);
 			path = PassCode;
 			sourceTree = "<group>";

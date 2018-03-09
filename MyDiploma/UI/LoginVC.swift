@@ -50,9 +50,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         if let login = loginTF.text {
             let user = DataModel.dataModel.getUser(with: login)
             if let usr = user {
-                let experimentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExperimentsVC") as! ExperimnetTableVC
-                experimentVC.user = usr
-                navigationController?.pushViewController(experimentVC, animated: true)
+                navigationController?.pushViewController(ExperimnetTableVC.instance(for: usr), animated: true)
             } else {
                 let alert = UIAlertController(title: "Error!", message: "Couldn't find user with such login!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {

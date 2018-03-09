@@ -18,7 +18,7 @@ class RegistrationVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(RegistrationVC.checkRows))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(checkRows))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

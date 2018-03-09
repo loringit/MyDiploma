@@ -13,6 +13,12 @@ class ExperimnetTableVC: UITableViewController {
     
     var user: User!
     
+    static func instance(for user: User) -> ExperimnetTableVC {
+        let experimentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ExperimentsVC") as! ExperimnetTableVC
+        experimentVC.user = user
+        return experimentVC
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -40,9 +46,7 @@ class ExperimnetTableVC: UITableViewController {
     }
     
     func presentPassCodeVC(requiredLen: Int) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PassCode") as! PassCodeVC
-        controller.supposedLen = requiredLen
-        controller.user = user
+        let controller = PassCodeVC.instance(with: requiredLen, and: user)
         controller.modalTransitionStyle = .coverVertical
         controller.modalPresentationStyle = .overFullScreen
         present(controller, animated: true, completion: nil)
