@@ -1,0 +1,6 @@
+framework module Pods_MyDiploma {
+  umbrella header "Pods-MyDiploma-umbrella.h"
+
+  export *
+  module * { export * }
+}

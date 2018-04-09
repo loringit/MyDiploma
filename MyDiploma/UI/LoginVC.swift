@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Realm
+import RealmSwift
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
@@ -48,9 +50,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     @objc func checkAndProceed() {
         if let login = loginTF.text {
-            let user = DataModel.dataModel.getUser(with: login)
-            if let usr = user {
-                navigationController?.pushViewController(ExperimnetTableVC.instance(for: usr), animated: true)
+            let realm = try! Realm()
+            
+            if let user = realm.object(ofType: User.self, forPrimaryKey: login) {
+                navigationController?.pushViewController(ExperimnetTableVC.instance(for: user), animated: true)
             } else {
                 let alert = UIAlertController(title: "Error!", message: "Couldn't find user with such login!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {

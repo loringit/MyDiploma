@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RealmSwift
+import Realm
 
 enum AnalysisResult {
     case success(String)
@@ -23,9 +25,9 @@ class PassCodeVM {
     
     private var passcode = [Int]()
     private var touchesSet = [Float32]()
-    private var password: String
-    var supposedLen: Int
-    var attempts: Int {
+    private var password = ""
+    var supposedLen = 0
+    var attempts: Int = 0 {
         didSet {
             delegate?.update(for: attempts)
         }
@@ -38,20 +40,11 @@ class PassCodeVM {
         self.supposedLen = supposedLen
         self.user = user
         
-        switch supposedLen {
-        case 4:
-            attempts = user.num4Inputs.attempt
-            password = user.passwords[0]
-        case 5:
-            attempts = user.num5Inputs.attempt
-            password = user.passwords[1]
-        case 6:
-            attempts = user.num6Inputs.attempt
-            password = user.passwords[2]
-        default:
-            attempts = 0
-            password = ""
-            break
+        for passwordInfo in user.passwordInfos {
+            if passwordInfo.password.count == supposedLen {
+                self.password = passwordInfo.password
+                self.attempts = passwordInfo.userAttempt.count
+            }
         }
     }
     
@@ -80,24 +73,20 @@ class PassCodeVM {
         }
         
         if enteredPasscode == password {
-            switch supposedLen {
-            case 4:
-                user.num4Inputs.userAttempts.append(touchesSet)
-                user.num4Inputs.attempt += 1
-                attempts = user.num4Inputs.attempt
-            case 5:
-                user.num5Inputs.userAttempts.append(touchesSet)
-                user.num5Inputs.attempt += 1
-                attempts = user.num5Inputs.attempt
-            case 6:
-                user.num6Inputs.userAttempts.append(touchesSet)
-                user.num6Inputs.attempt += 1
-                attempts = user.num6Inputs.attempt
-            default:
-                break
+            for passwordInfo in user.passwordInfos {
+                if passwordInfo.password == password {
+                    
+                    let newAttempt = UserAttempt()
+                    newAttempt.attempt.append(objectsIn: touchesSet)
+                    
+                    let realm = try! Realm()
+                    try! realm.write {
+                        passwordInfo.userAttempt.append(newAttempt)
+                    }
+                    
+                    attempts += 1
+                }
             }
-            
-            DataModel.dataModel.save()
             
             delegate?.show(.success("You entered password \(attempts + 1) times!"))
         } else {

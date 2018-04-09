@@ -11,13 +11,13 @@
 		26FF52A31EC1FC3400933BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A11EC1FC3400933BC5 /* Main.storyboard */; };
 		26FF52A51EC1FC3400933BC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A41EC1FC3400933BC5 /* Assets.xcassets */; };
 		26FF52A81EC1FC3400933BC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FF52A61EC1FC3400933BC5 /* LaunchScreen.storyboard */; };
-		26FF52B11EC1FE4100933BC5 /* UserNumInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */; };
 		26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */; };
-		26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B31EC2070F00933BC5 /* DataModel.swift */; };
+		26FF52B41EC2070F00933BC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B31EC2070F00933BC5 /* User.swift */; };
 		26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */; };
 		26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B91EC235DB00933BC5 /* LoginVC.swift */; };
 		9314E5C0204AB0C6001E1CD8 /* PassCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */; };
 		9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */; };
+		D5A73CF305F58059D0E8EC58 /* Pods_MyDiploma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C69BA9BB1AB60765FB1154 /* Pods_MyDiploma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +27,15 @@
 		26FF52A41EC1FC3400933BC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26FF52A71EC1FC3400933BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26FF52A91EC1FC3400933BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNumInputs.swift; sourceTree = "<group>"; };
 		26FF52B01EC1FE4100933BC5 /* PassCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCodeVC.swift; sourceTree = "<group>"; };
-		26FF52B31EC2070F00933BC5 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		26FF52B31EC2070F00933BC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		26FF52B91EC235DB00933BC5 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeVM.swift; sourceTree = "<group>"; };
 		9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTableVC.swift; sourceTree = "<group>"; };
+		B0C69BA9BB1AB60765FB1154 /* Pods_MyDiploma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiploma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1C062D764155413B2DF394 /* Pods-MyDiploma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.release.xcconfig"; sourceTree = "<group>"; };
+		C51C9C23605E6B227A1E066A /* Pods-MyDiploma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A73CF305F58059D0E8EC58 /* Pods_MyDiploma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A3A032B5FC37624112B62A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C51C9C23605E6B227A1E066A /* Pods-MyDiploma.debug.xcconfig */,
+				BA1C062D764155413B2DF394 /* Pods-MyDiploma.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		11924171FA34BE91E4604864 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0C69BA9BB1AB60765FB1154 /* Pods_MyDiploma.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		26FF52911EC1FC3400933BC5 = {
 			isa = PBXGroup;
 			children = (
 				26FF529C1EC1FC3400933BC5 /* MyDiploma */,
 				26FF529B1EC1FC3400933BC5 /* Products */,
+				0A3A032B5FC37624112B62A8 /* Pods */,
+				11924171FA34BE91E4604864 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,8 +102,7 @@
 		9314E5BD204AA79D001E1CD8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26FF52AF1EC1FE4100933BC5 /* UserNumInputs.swift */,
-				26FF52B31EC2070F00933BC5 /* DataModel.swift */,
+				26FF52B31EC2070F00933BC5 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26FF52AC1EC1FC3400933BC5 /* Build configuration list for PBXNativeTarget "MyDiploma" */;
 			buildPhases = (
+				2051AC9A2CD83AEA2E1A89A5 /* [CP] Check Pods Manifest.lock */,
 				26FF52961EC1FC3400933BC5 /* Sources */,
 				26FF52971EC1FC3400933BC5 /* Frameworks */,
 				26FF52981EC1FC3400933BC5 /* Resources */,
+				7A5C540A3E889F4AF88BF6C3 /* [CP] Embed Pods Frameworks */,
+				BD54B822985DBADC7D2E4D4E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -175,19 +199,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2051AC9A2CD83AEA2E1A89A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyDiploma-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A5C540A3E889F4AF88BF6C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD54B822985DBADC7D2E4D4E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		26FF52961EC1FC3400933BC5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9314E5C0204AB0C6001E1CD8 /* PassCodeVM.swift in Sources */,
-				26FF52B41EC2070F00933BC5 /* DataModel.swift in Sources */,
+				26FF52B41EC2070F00933BC5 /* User.swift in Sources */,
 				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
 				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
 				9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
 				26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */,
-				26FF52B11EC1FE4100933BC5 /* UserNumInputs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +399,7 @@
 		};
 		26FF52AD1EC1FC3400933BC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51C9C23605E6B227A1E066A /* Pods-MyDiploma.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YJB24HLAND;
@@ -334,6 +414,7 @@
 		};
 		26FF52AE1EC1FC3400933BC5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA1C062D764155413B2DF394 /* Pods-MyDiploma.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YJB24HLAND;

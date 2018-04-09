@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Realm
+import RealmSwift
 
 class RegistrationCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
@@ -56,7 +58,9 @@ class RegistrationVC: UITableViewController {
             case 0:
                 if let text = cell.textField.text {
                     login = text
-                    if DataModel.dataModel.getUser(with: login) != nil {
+                    let realm = try! Realm()
+                    
+                    if realm.object(ofType: User.self, forPrimaryKey: login) != nil {
                         login = ""
                         presentAlert(with: "Error!", and: "Check your fields! At least one of them is inappropriate!")
                         return
@@ -73,9 +77,20 @@ class RegistrationVC: UITableViewController {
         }
         
         if !login.isEmpty && passwords.count == 3 {
-            let user = User(login: login, passwords: passwords)
+            let realmUser = User()
+            realmUser.login = login
             
-            DataModel.dataModel.users.append(user)
+            for password in passwords {
+                let newPasswordInfo = PasswordInfo()
+                newPasswordInfo.password = password
+                realmUser.passwordInfos.append(newPasswordInfo)
+            }
+            
+            let realm = try! Realm()
+            
+            try! realm.write {
+                realm.add(realmUser, update: true)
+            }
             
             let _ = navigationController?.popViewController(animated: true)
         } else {
