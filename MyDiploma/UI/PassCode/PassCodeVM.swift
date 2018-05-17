@@ -15,7 +15,7 @@ enum AnalysisResult {
     case error(String)
 }
 
-protocol PassCodeVMDelegate {
+protocol PassCodeVMDelegate: class {
     func showLoader()
     func show(_ result: AnalysisResult)
     func update(for attempts: Int)
@@ -34,7 +34,7 @@ class PassCodeVM {
     }
     private var user: User
     
-    var delegate: PassCodeVMDelegate?
+    weak var delegate: PassCodeVMDelegate?
     
     init(with supposedLen: Int, for user: User) {
         self.supposedLen = supposedLen

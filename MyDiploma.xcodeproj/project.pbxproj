@@ -17,6 +17,9 @@
 		26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF52B91EC235DB00933BC5 /* LoginVC.swift */; };
 		9314E5C0204AB0C6001E1CD8 /* PassCodeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */; };
 		9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */; };
+		9397A06F20A9993D001B7A83 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9397A06E20A9993D001B7A83 /* LoginVM.swift */; };
+		9397A07120A99949001B7A83 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9397A07020A99949001B7A83 /* RegistrationVM.swift */; };
+		9397A07320A99953001B7A83 /* ExperimentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9397A07220A99953001B7A83 /* ExperimentVM.swift */; };
 		D5A73CF305F58059D0E8EC58 /* Pods_MyDiploma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C69BA9BB1AB60765FB1154 /* Pods_MyDiploma.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,9 @@
 		26FF52B91EC235DB00933BC5 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeVM.swift; sourceTree = "<group>"; };
 		9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTableVC.swift; sourceTree = "<group>"; };
+		9397A06E20A9993D001B7A83 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		9397A07020A99949001B7A83 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
+		9397A07220A99953001B7A83 /* ExperimentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentVM.swift; sourceTree = "<group>"; };
 		B0C69BA9BB1AB60765FB1154 /* Pods_MyDiploma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiploma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1C062D764155413B2DF394 /* Pods-MyDiploma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.release.xcconfig"; sourceTree = "<group>"; };
 		C51C9C23605E6B227A1E066A /* Pods-MyDiploma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiploma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,9 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				9314E5C1204AB0CC001E1CD8 /* PassCode */,
-				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
-				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
-				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
+				9397A06B20A9902E001B7A83 /* Experiment */,
+				9397A06C20A9904D001B7A83 /* Registration */,
+				9397A06D20A99056001B7A83 /* Login */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -125,6 +131,33 @@
 				9314E5BF204AB0C6001E1CD8 /* PassCodeVM.swift */,
 			);
 			path = PassCode;
+			sourceTree = "<group>";
+		};
+		9397A06B20A9902E001B7A83 /* Experiment */ = {
+			isa = PBXGroup;
+			children = (
+				9380CE9B1EC4AE9F00C825E3 /* ExperimentTableVC.swift */,
+				9397A07220A99953001B7A83 /* ExperimentVM.swift */,
+			);
+			path = Experiment;
+			sourceTree = "<group>";
+		};
+		9397A06C20A9904D001B7A83 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				26FF52B51EC226EE00933BC5 /* RegistrationVC.swift */,
+				9397A07020A99949001B7A83 /* RegistrationVM.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		9397A06D20A99056001B7A83 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				26FF52B91EC235DB00933BC5 /* LoginVC.swift */,
+				9397A06E20A9993D001B7A83 /* LoginVM.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,11 +260,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyDiploma/Pods-MyDiploma-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -264,9 +303,12 @@
 				26FF52B41EC2070F00933BC5 /* User.swift in Sources */,
 				26FF52B61EC226EE00933BC5 /* RegistrationVC.swift in Sources */,
 				26FF52BA1EC235DB00933BC5 /* LoginVC.swift in Sources */,
+				9397A06F20A9993D001B7A83 /* LoginVM.swift in Sources */,
 				9380CE9C1EC4AE9F00C825E3 /* ExperimentTableVC.swift in Sources */,
 				26FF529E1EC1FC3400933BC5 /* AppDelegate.swift in Sources */,
 				26FF52B21EC1FE4100933BC5 /* PassCodeVC.swift in Sources */,
+				9397A07120A99949001B7A83 /* RegistrationVM.swift in Sources */,
+				9397A07320A99953001B7A83 /* ExperimentVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
